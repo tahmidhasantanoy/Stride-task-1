@@ -21,11 +21,11 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: <DashBoard />,
     children: [
       {
-        path: "allProduct",
+        path: "/dashboard/allProduct",
         element: <AllProduct />,
         loader: () => fetch("http://localhost:5000/get-all-product"),
       },
