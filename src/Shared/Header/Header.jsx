@@ -8,7 +8,7 @@ const Header = () => {
   const menu = (
     <>
       <li>
-        <Link>About</Link>
+        <Link to={"/"}>Home</Link>
       </li>
       <li>
         <Link to={"/add-products"}>Add Products</Link>
