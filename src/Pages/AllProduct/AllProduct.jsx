@@ -5,9 +5,7 @@ const AllProduct = () => {
   const allProductData = useLoaderData();
 
   return (
-    <div>
-      <div>
-        <div className="overflow-x-auto w-full">
+        <div className="overflow-x-auto w-full px-16">
           <table className="table w-full">
             {/* head */}
             <thead>
@@ -25,8 +23,6 @@ const AllProduct = () => {
             ))}
           </table>
         </div>
-      </div>
-    </div>
   );
 };
 

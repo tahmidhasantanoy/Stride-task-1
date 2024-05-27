@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import AddProducts from "../Pages/AddProducts/AddProducts";
 import DashBoard from "../Components/Layouts/DashBoard";
 import AllProduct from "../Pages/AllProduct/AllProduct";
+import ProductBreif from "../Pages/AllProduct/ProductBreif";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
         path: "/dashboard/allProduct",
         element: <AllProduct />,
         loader: () => fetch("http://localhost:5000/get-all-product"),
+      },
+      {
+        path: "/dashboard/detailsProduct/:id",
+        element: <ProductBreif />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/get-single-product/${params.id}`),
       },
     ],
   },

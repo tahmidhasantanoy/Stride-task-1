@@ -3,11 +3,11 @@
 import { Link } from "react-router-dom";
 
 const Details = ({ product }) => {
-  const { productTitle, date, price, imageUrl } = product;
+  const { _id,productTitle, date, price, imageUrl } = product;
   console.log(productTitle, date, price, imageUrl);
 
   return (
-    <tbody className="shadow-xl">
+    <tbody className="sm:shadow-lg md:shadow-xl">
       <tr>
         <td>
           <div className="flex items-center space-x-3">
@@ -27,7 +27,7 @@ const Details = ({ product }) => {
         <td></td>
         <th>
           <button className="btn btn-info btn-sm hover:text-white">
-            <Link /* to={`/detailstoy/${_id}`} */>details</Link>
+            <Link to={`/dashboard/detailsProduct/${_id}`}>details</Link>
           </button>
         </th>
       </tr>
