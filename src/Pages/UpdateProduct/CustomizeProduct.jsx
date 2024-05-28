@@ -1,17 +1,26 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-const CustomizeProduct = ({ product }) => {
-  const { _id, productTitle, date, price, imageUrl } = product;
-  console.log(_id, productTitle, date, price, imageUrl);
+const CustomizeProduct = ({ product, handleDelete }) => {
+  const { _id, productTitle, price, imageUrl } = product;
 
-  const handleDelete = () => {};
+  //   const handleDelete = (deleteProductId) => {
+  //     console.log(deleteProductId);
+
+  //     fetch(`http://localhost:5000/delete-product/${deleteProductId}`, {
+  //       method: "DELETE",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => console.log(data));
+  //   };
+
   return (
     <>
       <tbody className="shadow-xl rounded-2xl">
         <tr>
           <th className="">
             <button
-              onClick={() => handleDelete()}
+              onClick={() => handleDelete(_id)}
               className="btn btn-circle btn-outline "
             >
               <svg
@@ -49,7 +58,7 @@ const CustomizeProduct = ({ product }) => {
             <br />
           </td>
           <th>
-            <Link /* to={`/updatetoy/${_id}`} */>
+            <Link to={`/dashboard/update-single-product/${_id}`}>
               <button className="btn btn-sm btn-info hover:text-white">
                 Update
               </button>

@@ -6,6 +6,7 @@ import DashBoard from "../Components/Layouts/DashBoard";
 import AllProduct from "../Pages/AllProduct/AllProduct";
 import ProductBreif from "../Pages/AllProduct/ProductBreif";
 import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
+import UpdateSingleProduct from "../Pages/UpdateProduct/UpdateSingleProduct";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,12 @@ const router = createBrowserRouter([
         path: "/dashboard/update-product",
         element: <UpdateProduct />,
         loader: () => fetch("http://localhost:5000/get-all-product"),
+      },
+      {
+        path: "/dashboard/update-single-product/:id",
+        element: <UpdateSingleProduct />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/get-single-product/${params.id}`),
       },
     ],
   },
