@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Details = ({ product }) => {
   const { _id,productTitle, date, price, imageUrl } = product;
-  console.log(productTitle, date, price, imageUrl);
 
   return (
     <tbody className="sm:shadow-lg md:shadow-xl">

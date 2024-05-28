@@ -31,9 +31,9 @@ const DashBoardPage = () => {
               </Link>
             </li>
             <li>
-              <Link to={"/dashboard/enroll-class"}>
+              <Link to={"/dashboard/update-product"}>
                 <FaBook />
-                Enrolled classes
+                Update Product
               </Link>
             </li>
             <li>
