@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-const CustomizeProduct = ({ product, handleDelete }) => {
+const CustomizeProduct = ({ product, handleDelete, deleteId }) => {
   const { _id, productTitle, price, imageUrl } = product;
 
   //   const handleDelete = (deleteProductId) => {
@@ -20,7 +20,10 @@ const CustomizeProduct = ({ product, handleDelete }) => {
         <tr>
           <th className="">
             <button
-              onClick={() => handleDelete(_id)}
+              onClick={() => {
+                handleDelete(_id);
+                deleteId(_id);
+              }}
               className="btn btn-circle btn-outline "
             >
               <svg

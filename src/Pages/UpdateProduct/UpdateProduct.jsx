@@ -1,36 +1,42 @@
 import { useLoaderData } from "react-router-dom";
 import CustomizeProduct from "./CustomizeProduct";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
   const { data, setData } = useState([]);
-  const allProductUpdateData = useLoaderData();
+  const { X, setX } = useState([]);
 
-  // console.log(allProductUpdateData);
+  const allProductUpdateData = useLoaderData();
+  console.log(X);
 
   // eslint-disable-next-line no-unused-vars
   const { _id, productTitle, price, imageUrl, description, date } =
     allProductUpdateData;
 
   const handleDelete = (deleteProductId) => {
-    console.log(deleteProductId);
+    Swal.fire({
+      title: "Do you want to delete this?",
+      confirmButtonText: "ok",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Delete successfully!", "", "success");
+        console.log(deleteProductId);
 
-    fetch(`http://localhost:5000/delete-product/${deleteProductId}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-
-        const remain = allProductUpdateData.filter(
-          (item) => item._id != deleteProductId
-        );
-
-        console.log(remain);
-        console.log(typeof data === Array);
-
-        setData(remain);
-      });
+        fetch(`http://localhost:5000/delete-product/${deleteProductId}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            const remaining = allProductUpdateData.filter(
+              (item) => item._id !== deleteProductId
+            );
+            setData(remaining);
+          })
+          .catch((err) => console.log(err.message));
+      }
+    });
   };
 
   return (
@@ -52,6 +58,7 @@ const UpdateProduct = () => {
               key={index}
               product={item}
               handleDelete={handleDelete}
+              deleteId={setX}
             ></CustomizeProduct>
           ))}
         </table>
